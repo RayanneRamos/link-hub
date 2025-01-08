@@ -19,8 +19,11 @@ export default function Add() {
       <Text style={styles.label}>Selecione uma categoria</Text>
       <Categories />
       <View style={styles.form}>
-        <Input placeholder="Nome" />
-        <Input placeholder="Url" />
+        <Input
+          placeholder="Nome"
+          onChangeText={(value) => console.log(value)}
+        />
+        <Input placeholder="Url" onChangeText={(value) => console.log(value)} />
         <Button title="Adicionar" />
       </View>
     </View>
