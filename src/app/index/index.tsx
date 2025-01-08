@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   FlatList,
   Modal,
+  Alert,
 } from "react-native";
 import { styles } from "./styles";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -14,11 +15,26 @@ import { Categories } from "@/src/components/categories";
 import { Link } from "@/src/components/link";
 import { Option } from "@/src/components/option";
 import { router } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { categories } from "@/src/utils/categories";
+import { linkStorage, LinkStorageProps } from "@/src/storage/link-storage";
 
 export default function Index() {
   const [category, setCategory] = useState(categories[0].name);
+  const [links, setLinks] = useState<LinkStorageProps[]>([]);
+
+  async function getLinks() {
+    try {
+      const response = await linkStorage.get();
+      setLinks(response);
+    } catch (error) {
+      Alert.alert("Erro", "Não foi possível listar os links.");
+    }
+  }
+
+  useEffect(() => {
+    getLinks();
+  }, [category]);
 
   return (
     <View style={styles.container}>
@@ -34,12 +50,12 @@ export default function Index() {
       <Categories onChange={setCategory} selected={category} />
 
       <FlatList
-        data={["1", "2", "3"]}
-        keyExtractor={(item) => item}
-        renderItem={() => (
+        data={links}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
           <Link
-            name="Rocketseat"
-            url="https://www.rocketseat.com.br"
+            name={item.name}
+            url={item.url}
             onDetails={() => console.log("clicou")}
           />
         )}
