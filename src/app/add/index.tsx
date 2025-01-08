@@ -11,6 +11,7 @@ import { useState } from "react";
 export default function Add() {
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
+  const [category, setCategory] = useState("");
 
   function handleAdd() {
     console.log({ name, url });
@@ -25,7 +26,7 @@ export default function Add() {
         <Text style={styles.title}>Novo</Text>
       </View>
       <Text style={styles.label}>Selecione uma categoria</Text>
-      <Categories />
+      <Categories onChange={setCategory} selected={category} />
       <View style={styles.form}>
         <Input placeholder="Nome" onChangeText={setName} autoCorrect={false} />
         <Input placeholder="Url" onChangeText={setUrl} autoCorrect={false} />
