@@ -4,6 +4,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { colors } from "@/src/styles/colors";
 import { router } from "expo-router";
 import { Categories } from "@/src/components/categories";
+import { Input } from "@/src/components/input";
 
 export default function Add() {
   return (
@@ -16,6 +17,10 @@ export default function Add() {
       </View>
       <Text style={styles.label}>Selecione uma categoria</Text>
       <Categories />
+      <View style={styles.form}>
+        <Input placeholder="Nome" />
+        <Input placeholder="Url" />
+      </View>
     </View>
   );
 }
