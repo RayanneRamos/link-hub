@@ -26,6 +26,9 @@ export default function Index() {
   async function getLinks() {
     try {
       const response = await linkStorage.get();
+
+      //let filtered = response.filter((link) => link.category === category);
+
       setLinks(response);
     } catch (error) {
       Alert.alert("Erro", "Não foi possível listar os links.");
