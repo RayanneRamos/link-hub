@@ -1,7 +1,6 @@
 import {
   View,
   Text,
-  StyleSheet,
   Image,
   TouchableOpacity,
   FlatList,
@@ -16,7 +15,7 @@ import { Categories } from "@/src/components/categories";
 import { Link } from "@/src/components/link";
 import { Option } from "@/src/components/option";
 import { router, useFocusEffect } from "expo-router";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { categories } from "@/src/utils/categories";
 import { linkStorage, LinkStorageProps } from "@/src/storage/link-storage";
 
@@ -35,6 +34,7 @@ export default function Index() {
       setLinks(response);
     } catch (error) {
       Alert.alert("Erro", "Não foi possível listar os links.");
+      console.log(error);
     }
   }
 
@@ -50,6 +50,7 @@ export default function Index() {
       setShowModal(false);
     } catch (error) {
       Alert.alert("Erro", "Não foi possível excluir.");
+      console.log(error);
     }
   }
 
@@ -66,6 +67,7 @@ export default function Index() {
       setShowModal(false);
     } catch (error) {
       Alert.alert("Link", "Não foi possível abrir o link.");
+      console.log(error);
     }
   }
 
