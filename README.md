@@ -23,7 +23,7 @@
 3. **Acesso Direto**: Abra seus links diretamente pelo aplicativo com apenas um toque.
 4. **Gerenciamento de Links**: Remova links que não são mais necessários de forma prática e sem complicações.
 
-## 🧪 Technologies
+## 🧪 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
